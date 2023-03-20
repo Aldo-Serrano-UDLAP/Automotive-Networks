@@ -21,7 +21,7 @@ begin
 	process(CLK,RST)
 	
 	variable count : integer := 0;
-	variable dataSize : integer := 24; 
+	variable dataSize : integer := 20; 
 	variable crcSize : integer := 15;
 	variable finalSize : integer := crcSize + dataSize;
 	
