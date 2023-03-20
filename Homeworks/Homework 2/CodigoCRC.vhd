@@ -4,11 +4,11 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity CRC15 is 
 port( 
-	CLK: in std_logic;						-- Reloj de la simulacion 
-	RST: in std_logic;						-- Reset para poder reiniciar las variables
+	CLK: in std_logic;					-- Reloj de la simulacion 
+	RST: in std_logic;					-- Reset para poder reiniciar las variables
 	BitIN: in std_logic; 					-- Variable que guarda el bit que entrda al sistema
-	CRC_Residuo: out unsigned(14 downto 0); -- Cadena de bits que representa el residuo
-	CRC_Completado: out std_logic 			-- Variable que determina cuando se termina el calculo (High - 1)
+	CRC_Residuo: out unsigned(14 downto 0); 		-- Cadena de bits que representa el residuo
+	CRC_Completado: out std_logic 				-- Variable que determina cuando se termina el calculo (High - 1)
 	); 
 end CRC15; 
 
