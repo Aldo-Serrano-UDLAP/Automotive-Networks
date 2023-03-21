@@ -10,11 +10,11 @@ ARCHITECTURE behavior OF tb IS
     -- Se declara el componente para poder simular
     COMPONENT CRC15
     port( 
-	CLK: in std_logic;						-- Reloj de la simulacion 
-	RST: in std_logic;						-- Reset para poder reiniciar las variables
+	CLK: in std_logic;					-- Reloj de la simulacion 
+	RST: in std_logic;					-- Reset para poder reiniciar las variables
 	BitIN: in std_logic; 					-- Variable que guarda el bit que entrda al sistema
-	CRC_Residuo: out unsigned(14 downto 0); -- Cadena de bits que representa el residuo
-	CRC_Completado: out std_logic 			-- Variable que determina cuando se termina el calculo (High - 1)
+	CRC_Residuo: out unsigned(14 downto 0); 		-- Cadena de bits que representa el residuo
+	CRC_Completado: out std_logic 				-- Variable que determina cuando se termina el calculo (High - 1)
         );
     END COMPONENT;    
 
@@ -67,33 +67,33 @@ BEGIN
 		
         BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj; 
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;  
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;	 
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
 		
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         wait until CRC_Completado = '1'; wait for periodoDeReloj;
 		
-		--Segundo Calculo
+	--Segundo Calculo
         RST <= '1';
 		wait for 100 ns;
         wait until falling_edge(CLK);
         RST <= '0';	
-		-- Valor de la trama de datos representada en hexadecimal 0x
+	-- Valor de la trama de datos representada en hexadecimal 0xFD87A
         BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
@@ -101,63 +101,63 @@ BEGIN
 		
         BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj; 
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
 		
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;  
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj; 
 		
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;	 
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         wait until CRC_Completado = '1'; wait for periodoDeReloj; 
 		
-		--Tercer Calculo
+	--Tercer Calculo
         RST <= '1';
-		wait for 100 ns;
+	wait for 100 ns;
         wait until falling_edge(CLK);
         RST <= '0';	
-		--Valor de la trama de datos representada en hexadecimal 0xAA3B1
+	--Valor de la trama de datos representada en hexadecimal 0xAA3B1
 		
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
         BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj; 
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;  
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
 		
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj;
-		BitIN <= '1'; wait for periodoDeReloj;
+	BitIN <= '1'; wait for periodoDeReloj;
         BitIN <= '0'; wait for periodoDeReloj; 
 		
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;	 
-		BitIN <= '0'; wait for periodoDeReloj;
+	BitIN <= '0'; wait for periodoDeReloj;
         BitIN <= '1'; wait for periodoDeReloj;
 		
-		BitIN <= '0'; wait for periodoDeReloj;
-		wait until CRC_Completado = '1'; wait for periodoDeReloj; 
+	BitIN <= '0'; wait for periodoDeReloj;
+	wait until CRC_Completado = '1'; wait for periodoDeReloj; 
 		
-		RST <= '1';
+	RST <= '1';
       wait;
    end process;
 END;
